@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Creating Twitter Typeahead using Local Data</title>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.11.0/jquery.typeahead.min.js" integrity="sha512-EvIw6kLsqQVDyosPz7YK2se/aTtTMs4q5LaG69ng7CukLR02uUp1CiyrL1Le/0jY6nqFAvCpjkOUPvIzTqv6UA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.3.1/bloodhound.min.js"></script>
+
     <script>
         $(document).ready(function(){
             // Defining the local dataset
@@ -31,60 +34,101 @@
         });
     </script>
     <style>
-        .bs-example {
-            font-family: sans-serif;
-            position: relative;
-            margin: 100px;
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
         }
-        .typeahead, .tt-query, .tt-hint {
-            border: 2px solid #CCCCCC;
-            border-radius: 8px;
-            font-size: 22px; /* Set input font size */
-            height: 30px;
-            line-height: 30px;
-            outline: medium none;
-            padding: 8px 12px;
-            width: 396px;
+
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {height: 450px}
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            padding-top: 20px;
+            background-color: #f1f1f1;
+            height: 100%;
         }
-        .typeahead {
-            background-color: #FFFFFF;
+
+        .tab-content {
+            padding: 10px;
         }
-        .typeahead:focus {
-            border: 2px solid #0097CF;
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
         }
-        .tt-query {
-            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-        }
-        .tt-hint {
-            color: #999999;
-        }
-        .tt-menu {
-            background-color: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-            margin-top: 12px;
-            padding: 8px 0;
-            width: 422px;
-        }
-        .tt-suggestion {
-            font-size: 22px;  /* Set suggestion dropdown font size */
-            padding: 3px 20px;
-        }
-        .tt-suggestion:hover {
-            cursor: pointer;
-            background-color: #0097CF;
-            color: #FFFFFF;
-        }
-        .tt-suggestion p {
-            margin: 0;
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+            .row.content {height:auto;}
         }
     </style>
 </head>
 <body>
-<div class="bs-example">
-    <h2>Type your favorite car name</h2>
-    <input type="text" class="typeahead tt-query" autocomplete="off" spellcheck="false">
-</div>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-cd"></span></a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-12 text-left">
+            <h1>Welcome to NBA Stats</h1>
+            <hr>
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+                <li><a data-toggle="tab" href="#menu1">Compare players</a></li>
+                <li><a data-toggle="tab" href="#menu2">Compare teams</a></li>
+                <li><a data-toggle="tab" href="#menu3">Predict who wins </a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+                    <div class="tab-content">
+                        <p>Let's compare players, teams and predict win</p>
+                    </div>
+                </div>
+                <div id="menu1" class="tab-pane fade">
+                    <div class="tab-content">
+                        <div id="the-basics">
+                            <input type="text" class="typeahead tt-query" autocomplete="off" spellcheck="false">                        </div>
+
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+                <div id="menu2" class="tab-pane fade">
+                    <div class="tab-content">
+
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                    </div>
+                </div>
+                <div id="menu3" class="tab-pane fade">
+                    <div class="tab-content">
+
+                    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
 </body>
 </html>
